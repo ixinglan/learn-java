@@ -1,4 +1,4 @@
-package nio.channel;
+package nio.channel.c01;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -72,7 +72,7 @@ public class TestChannel {
 		CharsetDecoder cd = cs1.newDecoder();
 		
 		CharBuffer cBuf = CharBuffer.allocate(1024);
-		cBuf.put("尚硅谷威武！");
+		cBuf.put("天王盖地虎！");
 		cBuf.flip();
 		
 		//编码
@@ -89,7 +89,7 @@ public class TestChannel {
 		
 		System.out.println("------------------------------------------------------");
 		
-		Charset cs2 = Charset.forName("GBK");
+		Charset cs2 = Charset.forName("UTF-8");
 		bBuf.flip();
 		CharBuffer cBuf3 = cs2.decode(bBuf);
 		System.out.println(cBuf3.toString());
