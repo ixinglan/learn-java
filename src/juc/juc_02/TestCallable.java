@@ -16,7 +16,7 @@ public class TestCallable {
 		
 		//1.执行 Callable 方式，需要 FutureTask 实现类的支持，用于接收运算结果。
 		FutureTask<Integer> result = new FutureTask<>(td);
-		
+
 		new Thread(result).start();
 		
 		//2.接收线程运算后的结果
