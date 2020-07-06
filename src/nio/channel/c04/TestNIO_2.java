@@ -24,7 +24,7 @@ public class TestNIO_2 {
             ByteBuffer buf = ByteBuffer.allocate(1024);
             inChannel.read(buf);
 
-			buf.flip();
+            buf.flip();
             outChannel.write(buf);
 
         } catch (IOException e) {
