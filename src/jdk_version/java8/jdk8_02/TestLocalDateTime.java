@@ -8,7 +8,6 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Set;
 
 public class TestLocalDateTime {
-
     //6.ZonedDate、ZonedTime、ZonedDateTime ： 带时区的时间或日期
     @Test
     public void test7() {
@@ -57,10 +56,17 @@ public class TestLocalDateTime {
         //自定义：下一个工作日
         LocalDateTime ldt5 = ldt.with((l) -> {
             LocalDateTime ldt4 = (LocalDateTime) l;
-
             DayOfWeek dow = ldt4.getDayOfWeek();
 
-            if (dow.equals(DayOfWeek.FRIDAY)) {
+            if (dow.equals(DayOfWeek.MONDAY)) {
+                return ldt4.plusDays(7);
+            } else if (dow.equals(DayOfWeek.TUESDAY)) {
+                return ldt4.plusDays(6);
+            } else if (dow.equals(DayOfWeek.SUNDAY)) {
+                return ldt4.plusDays(5);
+            } else if (dow.equals(DayOfWeek.THURSDAY)) {
+                return ldt4.plusDays(4);
+            } else if (dow.equals(DayOfWeek.FRIDAY)) {
                 return ldt4.plusDays(3);
             } else if (dow.equals(DayOfWeek.SATURDAY)) {
                 return ldt4.plusDays(2);
@@ -87,8 +93,10 @@ public class TestLocalDateTime {
         }
 
         Instant ins2 = Instant.now();
-
-        System.out.println("所耗费时间为：" + Duration.between(ins1, ins2));
+        Duration between = Duration.between(ins1, ins2);
+        System.out.println("所耗费时间为：" + between);
+        System.out.println("所耗费时间为：" + between.getSeconds());
+        System.out.println("所耗费时间为：" + between.toMillis());
 
         System.out.println("----------------------------------");
 
@@ -99,6 +107,9 @@ public class TestLocalDateTime {
         System.out.println(pe.getYears());
         System.out.println(pe.getMonths());
         System.out.println(pe.getDays());
+
+        Period until = ld2.until(ld1);//同between
+        System.out.println(until.getYears());
     }
 
     //2. Instant : 时间戳。 （使用 Unix 元年  1970年1月1日 00:00:00 所经历的毫秒值）
@@ -107,36 +118,49 @@ public class TestLocalDateTime {
         Instant ins = Instant.now();  //默认使用 UTC 时区
         System.out.println(ins);
 
-        OffsetDateTime odt = ins.atOffset(ZoneOffset.ofHours(8));
+        OffsetDateTime odt = ins.atOffset(ZoneOffset.ofHours(8));//指定时区
         System.out.println(odt);
 
-        System.out.println(ins.getNano());
+        System.out.println(ins.toEpochMilli());//转成时间戳
 
-        Instant ins2 = Instant.ofEpochSecond(5);
+        Instant ins2 = Instant.ofEpochSecond(5);//设置Instant/秒
         System.out.println(ins2);
     }
 
     //1. LocalDate、LocalTime、LocalDateTime
     @Test
     public void test1() {
+        LocalDate ld = LocalDate.now();
+        LocalTime lt = LocalTime.now();
         LocalDateTime ldt = LocalDateTime.now();
+        System.out.println(ld);
+        System.out.println(lt);
         System.out.println(ldt);
 
+        System.out.println("-------------------");
         LocalDateTime ld2 = LocalDateTime.of(2016, 11, 21, 10, 10, 10);
         System.out.println(ld2);
+        System.out.println("-------------------");
 
         LocalDateTime ldt3 = ld2.plusYears(20);
         System.out.println(ldt3);
+        System.out.println("-------------------");
 
         LocalDateTime ldt4 = ld2.minusMonths(2);
         System.out.println(ldt4);
+        System.out.println("-------------------");
 
         System.out.println(ldt.getYear());
         System.out.println(ldt.getMonthValue());
         System.out.println(ldt.getDayOfMonth());
+        System.out.println(ldt.getDayOfWeek());
         System.out.println(ldt.getHour());
         System.out.println(ldt.getMinute());
         System.out.println(ldt.getSecond());
+
+        System.out.println("-------------------");
+        LocalDateTime ldt5 = ld2.withDayOfYear(7);
+        System.out.println(ldt5);
     }
 
 }

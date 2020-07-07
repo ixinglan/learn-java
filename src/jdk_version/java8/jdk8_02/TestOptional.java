@@ -32,7 +32,7 @@ public class TestOptional {
     public void test3() {
         Optional<Employee> op = Optional.ofNullable(new Employee());
 
-        if (op.isPresent()) {
+        if (op.isPresent()) {//判断是否有值
             System.out.println(op.get());
         }
 
@@ -45,11 +45,11 @@ public class TestOptional {
 
     @Test
     public void test2() {
-		/*Optional<Employee> op = Optional.ofNullable(null);
-		System.out.println(op.get());*/
+        Optional<Employee> op = Optional.ofNullable(new Employee());//of 和 empty的综合
+        System.out.println(op.get());
 
-//		Optional<Employee> op = Optional.empty();
-//		System.out.println(op.get());
+        Optional<Employee> op2 = Optional.empty();
+        System.out.println(op2.get());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class TestOptional {
         System.out.println(name);
     }
 
-    //需求：获取一个男人心中女神的名字
+    //需求：获取一个名字
     public String getGodnessName(Man man) {
         if (man != null) {
             Godness g = man.getGod();
@@ -77,7 +77,7 @@ public class TestOptional {
             }
         }
 
-        return "苍老师";
+        return "赵小二";
     }
 
     //运用 Optional 的实体类
@@ -93,7 +93,7 @@ public class TestOptional {
     public String getGodnessName2(Optional<NewMan> man) {
         return man.orElse(new NewMan())
                 .getGodness()
-                .orElse(new Godness("苍老师"))
+                .orElse(new Godness("赵小二"))
                 .getName();
     }
 }
