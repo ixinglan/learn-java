@@ -2,10 +2,7 @@ package jdk_version.java8.jdk8_02.annotation;
 
 import org.junit.Test;
 
-import javax.sound.midi.Soundbank;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.sql.SQLOutput;
 
 /**
  * @description: 测试重复注解
@@ -25,5 +22,6 @@ public class AnnotatonTest {
 
     @MyAnnotation("thank")
     @MyAnnotation("you")
-    public void show(){}
+    public void show() {
+    }
 }
