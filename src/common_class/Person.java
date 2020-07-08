@@ -1,4 +1,4 @@
-package string;
+package common_class;
 
 /**
  * @description:
