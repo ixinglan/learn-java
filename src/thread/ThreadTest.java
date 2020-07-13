@@ -71,7 +71,7 @@ class HelloThrad extends Thread {
         for (int i = 0; i < 100; i++) {
             System.out.println(Thread.currentThread().getName() + i);
             if (i % 20 == 0) {
-                yield();//不太明显
+                this.yield();//不太明显
             }
         }
     }
