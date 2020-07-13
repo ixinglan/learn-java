@@ -1,0 +1,3 @@
+this is 五行八卦阵!
+ i love github 尊重开源
+end
