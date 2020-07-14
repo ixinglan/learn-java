@@ -8,7 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- *
  * 实现TCP的网络编程
  * 例题2：客户端发送文件给服务端，服务端将文件保存在本地。
  */
@@ -19,7 +18,7 @@ public class TCPTest2 {
     @Test
     public void client() throws IOException {
         //1.
-        Socket socket = new Socket(InetAddress.getByName("127.0.0.1"),9090);
+        Socket socket = new Socket(InetAddress.getByName("127.0.0.1"), 9090);
         //2.
         OutputStream os = socket.getOutputStream();
         //3.
@@ -27,8 +26,8 @@ public class TCPTest2 {
         //4.
         byte[] buffer = new byte[1024];
         int len;
-        while((len = fis.read(buffer)) != -1){
-            os.write(buffer,0,len);
+        while ((len = fis.read(buffer)) != -1) {
+            os.write(buffer, 0, len);
         }
         //5.
         fis.close();
@@ -52,8 +51,8 @@ public class TCPTest2 {
         //5.
         byte[] buffer = new byte[1024];
         int len;
-        while((len = is.read(buffer)) != -1){
-            fos.write(buffer,0,len);
+        while ((len = is.read(buffer)) != -1) {
+            fos.write(buffer, 0, len);
         }
         //6.
         fos.close();

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 public class URLTest1 {
     public static void main(String[] args) {
         HttpURLConnection urlConnection = null;
@@ -15,32 +16,32 @@ public class URLTest1 {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.connect();
             is = urlConnection.getInputStream();
-            fos = new FileOutputStream("day10\\beauty3.jpg");
+            fos = new FileOutputStream("beauty5.jpg");
             byte[] buffer = new byte[1024];
             int len;
-            while((len = is.read(buffer)) != -1){
-                fos.write(buffer,0,len);
+            while ((len = is.read(buffer)) != -1) {
+                fos.write(buffer, 0, len);
             }
             System.out.println("下载完成");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             //关闭资源
-            if(is != null){
+            if (is != null) {
                 try {
                     is.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(fos != null){
+            if (fos != null) {
                 try {
                     fos.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(urlConnection != null){
+            if (urlConnection != null) {
                 urlConnection.disconnect();
             }
         }
