@@ -2,11 +2,14 @@ package io.io.io_01;
 
 import org.junit.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * 测试FileInputStream和FileOutputStream的使用
- *
+ * <p>
  * 结论：
  * 1. 对于文本文件(.txt,.java,.c,.cpp)，使用字符流处理
  * 2. 对于非文本文件(.jpg,.mp3,.mp4,.avi,.doc,.ppt,...)，使用字节流处理
@@ -26,15 +29,15 @@ public class FileInputOutputStreamTest {
             //3.读数据
             byte[] buffer = new byte[5];
             int len;//记录每次读取的字节的个数
-            while((len = fis.read(buffer)) != -1){
-                String str = new String(buffer,0,len);
+            while ((len = fis.read(buffer)) != -1) {
+                String str = new String(buffer, 0, len);
                 System.out.print(str);
 
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(fis != null){
+            if (fis != null) {
                 //4.关闭资源
                 try {
                     fis.close();
@@ -51,7 +54,7 @@ public class FileInputOutputStreamTest {
     实现对图片的复制操作: 字节流成功
      */
     @Test
-    public void testFileInputOutputStream()  {
+    public void testFileInputOutputStream() {
         FileInputStream fis = null;
         FileOutputStream fos = null;
         try {
@@ -64,14 +67,14 @@ public class FileInputOutputStreamTest {
             //复制的过程
             byte[] buffer = new byte[5];
             int len;
-            while((len = fis.read(buffer)) != -1){
-                fos.write(buffer,0,len);
+            while ((len = fis.read(buffer)) != -1) {
+                fos.write(buffer, 0, len);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(fos != null){
+            if (fos != null) {
                 //
                 try {
                     fos.close();
@@ -79,7 +82,7 @@ public class FileInputOutputStreamTest {
                     e.printStackTrace();
                 }
             }
-            if(fis != null){
+            if (fis != null) {
                 try {
                     fis.close();
                 } catch (IOException e) {
@@ -92,7 +95,7 @@ public class FileInputOutputStreamTest {
     }
 
     //指定路径下文件的复制
-    public void copyFile(String srcPath,String destPath){
+    public void copyFile(String srcPath, String destPath) {
         FileInputStream fis = null;
         FileOutputStream fos = null;
         try {
@@ -107,14 +110,14 @@ public class FileInputOutputStreamTest {
             //复制的过程
             byte[] buffer = new byte[1024];
             int len;
-            while((len = fis.read(buffer)) != -1){
-                fos.write(buffer,0,len);
+            while ((len = fis.read(buffer)) != -1) {
+                fos.write(buffer, 0, len);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(fos != null){
+            if (fos != null) {
                 //
                 try {
                     fos.close();
@@ -122,7 +125,7 @@ public class FileInputOutputStreamTest {
                     e.printStackTrace();
                 }
             }
-            if(fis != null){
+            if (fis != null) {
                 try {
                     fis.close();
                 } catch (IOException e) {
@@ -136,14 +139,14 @@ public class FileInputOutputStreamTest {
     }
 
     @Test
-    public void testCopyFile(){
+    public void testCopyFile() {
         long start = System.currentTimeMillis();
 
         //视频太大,可自行找较大的视频测试
         String srcPath = "video.avi";
         String destPath = "video2.avi";
 
-        copyFile(srcPath,destPath);
+        copyFile(srcPath, destPath);
 
         long end = System.currentTimeMillis();
         System.out.println("复制操作花费的时间为：" + (end - start));
