@@ -9,13 +9,11 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 public class OtherTest {
-
     /*
     获取构造器结构
      */
     @Test
     public void test1() throws NoSuchMethodException {
-
         Class clazz = Person.class;
         //getConstructors():获取当前运行时类中声明为public的构造器
         Constructor[] constructors = clazz.getConstructors();
