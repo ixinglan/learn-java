@@ -6,6 +6,9 @@ public class Creature<T> implements Serializable {
     private char gender;
     public double weight;
 
+    Creature() {
+    }
+
     private void breath() {
         System.out.println("爱是一道光");
     }

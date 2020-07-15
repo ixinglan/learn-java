@@ -12,10 +12,9 @@ public class OtherTest {
 
     /*
     获取构造器结构
-
      */
     @Test
-    public void test1() {
+    public void test1() throws NoSuchMethodException {
 
         Class clazz = Person.class;
         //getConstructors():获取当前运行时类中声明为public的构造器
@@ -30,12 +29,10 @@ public class OtherTest {
         for (Constructor c : declaredConstructors) {
             System.out.println(c);
         }
-
     }
 
     /*
     获取运行时类的父类
-
      */
     @Test
     public void test2() {
@@ -47,7 +44,6 @@ public class OtherTest {
 
     /*
     获取运行时类的带泛型的父类
-
      */
     @Test
     public void test3() {
@@ -59,8 +55,6 @@ public class OtherTest {
 
     /*
     获取运行时类的带泛型的父类的泛型
-
-
     代码：逻辑性代码  vs 功能性代码
      */
     @Test
@@ -97,8 +91,7 @@ public class OtherTest {
     }
 
     /*
-        获取运行时类所在的包
-
+       获取运行时类所在的包
      */
     @Test
     public void test6() {
@@ -110,7 +103,6 @@ public class OtherTest {
 
     /*
         获取运行时类声明的注解
-
      */
     @Test
     public void test7() {
@@ -118,7 +110,7 @@ public class OtherTest {
 
         Annotation[] annotations = clazz.getAnnotations();
         for (Annotation annos : annotations) {
-            System.out.println(annos);
+            System.out.println(annos.getClass());
         }
     }
 

@@ -9,14 +9,10 @@ import java.lang.reflect.Method;
 
 /**
  * 调用运行时类中指定的结构：属性、方法、构造器
- *
- * @author shkstart
- * @create 2019 下午 4:46
  */
 public class ReflectionTest {
 
     /*
-
         不需要掌握
      */
     @Test
@@ -24,7 +20,7 @@ public class ReflectionTest {
         Class clazz = Person.class;
 
         //创建运行时类的对象
-        Person p = (Person) clazz.newInstance();
+        Person p = (Person) clazz.newInstance();//1.9以后 clazz.getDeclaredConstructor().newInstance();
 
 
         //获取指定的属性：要求运行时类中属性声明为public
@@ -75,9 +71,7 @@ public class ReflectionTest {
      */
     @Test
     public void testMethod() throws Exception {
-
         Class clazz = Person.class;
-
         //创建运行时类的对象
         Person p = (Person) clazz.newInstance();
 

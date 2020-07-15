@@ -14,14 +14,13 @@ public class MethodTest {
 
     @Test
     public void test1() {
-
         Class clazz = Person.class;
 
         //getMethods():获取当前运行时类及其所有父类中声明为public权限的方法
-        Method[] methods = clazz.getMethods();
+        /*Method[] methods = clazz.getMethods();
         for (Method m : methods) {
             System.out.println(m);
-        }
+        }*/
         System.out.println();
         //getDeclaredMethods():获取当前运行时类中声明的所有方法。（不包含父类中声明的方法）
         Method[] declaredMethods = clazz.getDeclaredMethods();
