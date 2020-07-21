@@ -2,7 +2,6 @@ package jdk_version.java11;
 
 import org.junit.Test;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 

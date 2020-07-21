@@ -12,16 +12,17 @@ public class ZGCTest {
         List<Garbage2> list = new ArrayList<>();
         int count = 0;
         boolean flag = true;
-        while (flag){
+        while (flag) {
             list.add(new Garbage2());
-            if(count++==200){
+            if (count++ == 200) {
                 list.clear();
             }
         }
     }
 
 }
-class Garbage2{
+
+class Garbage2 {
     double d1 = 1;
     double d2 = 2;
 

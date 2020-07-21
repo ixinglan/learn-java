@@ -1,8 +1,5 @@
 package jdk_version.java9;
 
-import java.io.IOException;
-import java.net.URI;
-
 /**
  * 需在module-info中导入 requires jdk.incubator.httpclient;
  */

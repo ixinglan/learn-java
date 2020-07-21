@@ -7,7 +7,7 @@ import java.util.*;
 public class CollectionMapTest {
     //jdk 8 以及之前：创建一个只读特点的集合
     @Test
-    public void test1(){
+    public void test1() {
         List<String> list = new ArrayList<>();
         list.add("Tom");
         list.add("Jerry");
@@ -25,7 +25,7 @@ public class CollectionMapTest {
 
     //jdk 8 以及之前：创建一个只读特点的集合
     @Test
-    public void test2(){
+    public void test2() {
         //List:
         List<Integer> list = Collections.unmodifiableList(Arrays.asList(1, 2, 3));
 
@@ -47,12 +47,12 @@ public class CollectionMapTest {
             }
         });
 
-        map.forEach((k,v) -> System.out.println(k + ":" + v));
+        map.forEach((k, v) -> System.out.println(k + ":" + v));
     }
 
     //jdk 9 中：创建一个只读特点的集合
     @Test
-    public void test3(){
+    public void test3() {
         //List:
         List<Integer> list = List.of(1, 2, 3);
 
