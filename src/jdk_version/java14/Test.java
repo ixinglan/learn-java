@@ -18,7 +18,7 @@ public class Test {
         System.out.println(user.y);
 
         //1 instanceof 新特性
-        Object obj = "test";
+        Object obj = "bitwise";
         if (obj instanceof String s && s.length() == 4) {
             System.out.println(s);
             System.out.println(s.length());
