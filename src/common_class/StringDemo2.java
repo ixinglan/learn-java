@@ -46,7 +46,7 @@ public class StringDemo2 {
                         sBuffer.append(subString + ",");
                     }
                 }
-//                System.out.println(sBuffer);
+                System.out.println(sBuffer);
                 if (sBuffer.length() != 0) {
                     break;
                 }

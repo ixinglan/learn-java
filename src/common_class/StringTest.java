@@ -139,7 +139,7 @@ public class StringTest {
 
         System.out.println(s1);
         System.out.println(s2);
-        System.out.println(s1 = s2);
+        System.out.println(s1 == s2);
 
         String s3 = "abc";
         s3 += "def";
@@ -147,5 +147,6 @@ public class StringTest {
 
         String s4 = s3.replace('a', 'e');
         System.out.println(s4);
+        System.out.println(s3==s4);
     }
 }
