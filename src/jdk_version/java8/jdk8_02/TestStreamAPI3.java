@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 public class TestStreamAPI3 {
 
     List<Employee> emps = Arrays.asList(
-            new Employee(102, "李四", 79, 6666.66, Employee.Status.BUSY),
-            new Employee(101, "张三", 18, 9999.99, Employee.Status.FREE),
-            new Employee(103, "王五", 28, 3333.33, Employee.Status.VOCATION),
-            new Employee(104, "赵六", 8, 7777.77, Employee.Status.BUSY),
-            new Employee(104, "赵六", 8, 7777.77, Employee.Status.FREE),
-            new Employee(104, "赵六", 8, 7777.77, Employee.Status.FREE),
-            new Employee(105, "田七", 38, 5555.55, Employee.Status.BUSY)
+        new Employee(102, "李四", 79, 6666.66, Employee.Status.BUSY),
+        new Employee(101, "张三", 18, 9999.99, Employee.Status.FREE),
+        new Employee(103, "王五", 28, 3333.33, Employee.Status.VOCATION),
+        new Employee(104, "赵六", 8, 7777.77, Employee.Status.BUSY),
+        new Employee(104, "赵六", 8, 7777.77, Employee.Status.FREE),
+        new Employee(104, "赵六", 8, 7777.77, Employee.Status.FREE),
+        new Employee(105, "田七", 38, 5555.55, Employee.Status.BUSY)
     );
 
     //3. 终止操作
@@ -27,15 +27,15 @@ public class TestStreamAPI3 {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         Integer sum = list.stream()
-                .reduce(0, (x, y) -> x + y);
+            .reduce(0, (x, y) -> x + y);
 
         System.out.println(sum);
 
         System.out.println("----------------------------------------");
 
         Optional<Double> op = emps.stream()
-                .map(Employee::getSalary)
-                .reduce(Double::sum);
+            .map(Employee::getSalary)
+            .reduce(Double::sum);
 
         System.out.println(op.get());
     }
@@ -44,14 +44,15 @@ public class TestStreamAPI3 {
     @Test
     public void test2() {
         Optional<Integer> sum = emps.stream()
-                .map(Employee::getName)
-                .flatMap(TestStreamAPI1::filterCharacter)
-                .map((ch) -> {
-                    if (ch.equals('六'))
-                        return 1;
-                    else
-                        return 0;
-                }).reduce(Integer::sum);
+            .map(Employee::getName)
+            .flatMap(TestStreamAPI1::filterCharacter)
+            .map((ch) -> {
+                if (ch.equals('6')) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }).reduce(Integer::sum);
 
         System.out.println(sum.get());
     }
@@ -60,24 +61,24 @@ public class TestStreamAPI3 {
     @Test
     public void test3() {
         List<String> list = emps.stream()
-                .map(Employee::getName)
-                .collect(Collectors.toList());
+            .map(Employee::getName)
+            .collect(Collectors.toList());
 
         list.forEach(System.out::println);
 
         System.out.println("----------------------------------");
 
         Set<String> set = emps.stream()
-                .map(Employee::getName)
-                .collect(Collectors.toSet());
+            .map(Employee::getName)
+            .collect(Collectors.toSet());
 
         set.forEach(System.out::println);
 
         System.out.println("----------------------------------");
 
         HashSet<String> hs = emps.stream()
-                .map(Employee::getName)
-                .collect(Collectors.toCollection(HashSet::new));
+            .map(Employee::getName)
+            .collect(Collectors.toCollection(HashSet::new));
 
         hs.forEach(System.out::println);
     }
@@ -85,35 +86,35 @@ public class TestStreamAPI3 {
     @Test
     public void test4() {
         Optional<Double> max = emps.stream()
-                .map(Employee::getSalary)
-                .collect(Collectors.maxBy(Double::compare));
+            .map(Employee::getSalary)
+            .collect(Collectors.maxBy(Double::compare));
 
         System.out.println(max.get());
 
         Optional<Employee> op = emps.stream()
-                .collect(Collectors.minBy((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary())));
+            .collect(Collectors.minBy((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary())));
 
         System.out.println(op.get());
 
         Double sum = emps.stream()
-                .collect(Collectors.summingDouble(Employee::getSalary));
+            .collect(Collectors.summingDouble(Employee::getSalary));
 
         System.out.println(sum);
 
         Double avg = emps.stream()
-                .collect(Collectors.averagingDouble(Employee::getSalary));
+            .collect(Collectors.averagingDouble(Employee::getSalary));
 
         System.out.println(avg);
 
         Long count = emps.stream()
-                .collect(Collectors.counting());
+            .collect(Collectors.counting());
 
         System.out.println(count);
 
         System.out.println("--------------------------------------------");
 
         DoubleSummaryStatistics dss = emps.stream()
-                .collect(Collectors.summarizingDouble(Employee::getSalary));
+            .collect(Collectors.summarizingDouble(Employee::getSalary));
 
         System.out.println(dss.getMax());
     }
@@ -122,7 +123,7 @@ public class TestStreamAPI3 {
     @Test
     public void test5() {
         Map<Employee.Status, List<Employee>> map = emps.stream()
-                .collect(Collectors.groupingBy(Employee::getStatus));
+            .collect(Collectors.groupingBy(Employee::getStatus));
 
         System.out.println(map);
     }
@@ -131,14 +132,14 @@ public class TestStreamAPI3 {
     @Test
     public void test6() {
         Map<Employee.Status, Map<String, List<Employee>>> map = emps.stream()
-                .collect(Collectors.groupingBy(Employee::getStatus, Collectors.groupingBy((e) -> {
-                    if (e.getAge() >= 60)
-                        return "老年";
-                    else if (e.getAge() >= 35)
-                        return "中年";
-                    else
-                        return "成年";
-                })));
+            .collect(Collectors.groupingBy(Employee::getStatus, Collectors.groupingBy((e) -> {
+                if (e.getAge() >= 60)
+                    return "老年";
+                else if (e.getAge() >= 35)
+                    return "中年";
+                else
+                    return "成年";
+            })));
 
         System.out.println(map);
     }
@@ -147,7 +148,7 @@ public class TestStreamAPI3 {
     @Test
     public void test7() {
         Map<Boolean, List<Employee>> map = emps.stream()
-                .collect(Collectors.partitioningBy((e) -> e.getSalary() >= 5000));
+            .collect(Collectors.partitioningBy((e) -> e.getSalary() >= 5000));
 
         System.out.println(map);
     }
@@ -156,8 +157,8 @@ public class TestStreamAPI3 {
     @Test
     public void test8() {
         String str = emps.stream()
-                .map(Employee::getName)
-                .collect(Collectors.joining(",", "----", "----"));
+            .map(Employee::getName)
+            .collect(Collectors.joining(",", "----", "----"));
 
         System.out.println(str);
     }
@@ -165,8 +166,8 @@ public class TestStreamAPI3 {
     @Test
     public void test9() {
         Optional<Double> sum = emps.stream()
-                .map(Employee::getSalary)
-                .collect(Collectors.reducing(Double::sum));
+            .map(Employee::getSalary)
+            .collect(Collectors.reducing(Double::sum));
 
         System.out.println(sum.get());
     }
